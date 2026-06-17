@@ -32,37 +32,46 @@ export function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* ── Background image (right ~55% of viewport) ─────────────────── */}
+      {/* ── Background ───────────────────────────────────────────── */}
       <div className="absolute inset-0 z-0">
-        {/* Base warm gradient fill */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#f5f0e8] via-[#eee8d5] to-[#d4c9a8]" />
+        {/* Pure white base — fills entire section */}
+        <div className="absolute inset-0 bg-white" />
 
-        {/* The restaurant image covering right portion */}
+        {/* Restaurant image — covers right 75% only */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
+          initial={{ opacity: 0, scale: 1.03 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease: "easeOut" }}
-          className="absolute inset-0"
+          className="absolute top-0 right-0 bottom-0"
+          style={{ left: "25%" }}
         >
           <Image
-            src="/hero-bg.png"
+            src="/hero_restaurant_bg_1781724387068.png"
             alt="Luxury restaurant at sunset"
             fill
             priority
             className="object-cover object-center"
-            sizes="100vw"
+            sizes="75vw"
           />
         </motion.div>
 
-        {/* Left-side gradient overlay — smooth fade from cream to transparent */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f5f0e8] via-[#f5f0e8]/90 via-30% to-transparent to-65%" />
+        {/*
+          Transition overlay — multi-stop gradient for a clean, polished fade.
+          Solid white → softly dissolves into transparent over ~30% of the width.
+          Keeps text perfectly readable while blending naturally into the photo.
+        */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, #ffffff 0%, #ffffff 22%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.80) 34%, rgba(255,255,255,0.50) 42%, rgba(255,255,255,0.18) 52%, rgba(255,255,255,0.04) 60%, transparent 70%)",
+          }}
+        />
 
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f5f0e8]/60 to-transparent" />
-
-        {/* Subtle warm tint over the whole hero */}
-        <div className="absolute inset-0 bg-amber-900/[0.04]" />
+        {/* Subtle bottom fade for depth */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/30 to-transparent" />
       </div>
+
 
       {/* ── Floating decorative orbs ──────────────────────────────────── */}
       <div className="pointer-events-none absolute left-[40%] top-20 h-64 w-64 rounded-full bg-amber-400/10 blur-[80px]" />
