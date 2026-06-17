@@ -3,28 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronRight, TrendingDown, Shield, Clock } from "lucide-react";
-
-const floatingStats = [
-  {
-    icon: TrendingDown,
-    value: "23%",
-    label: "Cost Reduction",
-    sub: "Average for our clients",
-    color: "from-emerald-500 to-green-600",
-    delay: 0.7,
-    position: "bottom-20 right-[38%] md:right-[34%]",
-  },
-  {
-    icon: Shield,
-    value: "OUR PROMISE",
-    label: "The Restaurant's Ally",
-    sub: "Trusted by 500+ restaurants",
-    color: "from-amber-500 to-orange-500",
-    delay: 0.9,
-    position: "bottom-8 right-6 md:right-12",
-  },
-];
+import { ArrowRight, ChevronRight, Handshake } from "lucide-react";
 
 export function HeroSection() {
   return (
@@ -99,44 +78,43 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(2.6rem,6vw,4.2rem)] font-black leading-[1.05] tracking-tight text-[#1a2010]"
+            className="leading-[1.1] tracking-tight text-[#1a2010]"
           >
-            Restaurants
-            <br />
-            are working
-            <br />
-            harder than
-            <br />
-            ever while
-            <br />
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="text-amber-500"
-            >
-              keeping
-            </motion.span>
+            <span className="text-[clamp(1.6rem,3.8vw,2.6rem)] font-semibold not-italic">
+              Restaurants are working
+              <br />
+              harder than ever while
+            </span>
           </motion.h1>
 
-          {/* "less profit." with underline accent */}
+          {/* keeping + less profit — single tight block */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="relative inline-block"
+            transition={{ duration: 0.7, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col leading-[0.95]"
           >
-            <span className="text-[clamp(2.6rem,6vw,4.2rem)] font-black tracking-tight text-amber-500 italic">
-              less profit.
+            <span
+              className="text-[clamp(3rem,7vw,5rem)] font-black italic"
+              style={{ color: "#22c55e" }}
+            >
+              keeping
             </span>
-            {/* Animated underline */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-              style={{ originX: 0 }}
-              className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-amber-500 via-green-500 to-transparent"
-            />
+
+            <span
+              className="relative inline-block text-[clamp(3rem,7vw,5rem)] font-black tracking-tight italic"
+              style={{ color: "#22c55e" }}
+            >
+              less profit.
+              {/* Animated underline */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                style={{ originX: 0 }}
+                className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-green-400 via-emerald-500 to-transparent"
+              />
+            </span>
           </motion.div>
 
           {/* Sub-description */}
@@ -203,50 +181,75 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* ── Floating stat cards ───────────────────────────────────────── */}
-      {floatingStats.map((stat) => (
-        <motion.div
-          key={stat.label}
-          initial={{ opacity: 0, y: 30, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, delay: stat.delay, ease: [0.16, 1, 0.3, 1] }}
-          className={`absolute z-20 hidden md:flex ${stat.position}`}
-        >
-          <div className="group flex items-center gap-3 rounded-2xl border border-white/50 bg-white/90 px-4 py-3 shadow-xl backdrop-blur-md transition-all hover:bg-white hover:shadow-2xl">
-            <div
-              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${stat.color} shadow-md`}
-            >
-              <stat.icon className="h-5 w-5 text-white" />
-            </div>
-            <div>
-              <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-slate-400">
-                {stat.value}
-              </p>
-              <p className="text-[13px] font-extrabold text-slate-900 leading-tight">
-                {stat.label}
-              </p>
-              <p className="text-[10px] text-slate-500">{stat.sub}</p>
-            </div>
-          </div>
-        </motion.div>
-      ))}
-
-      {/* ── Scroll indicator ─────────────────────────────────────────── */}
+      {/* ── OUR PROMISE card — bottom-right ──────────────────────────── */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+        initial={{ opacity: 0, y: 24, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-10 right-8 z-20 hidden md:block"
       >
-        <span className="text-[11px] font-semibold uppercase tracking-widest text-slate-400">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="h-8 w-[1px] rounded-full bg-gradient-to-b from-amber-500 to-transparent"
-        />
+        <div
+          className="relative flex items-center gap-4 px-5 py-4 overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, #0b1f12 0%, #091a0f 60%, #050f08 100%)",
+            border: "1px solid rgba(34,197,94,0.28)",
+            boxShadow:
+              "0 0 0 1px rgba(34,197,94,0.06), 0 12px 40px rgba(0,0,0,0.55), 0 0 50px rgba(34,197,94,0.14)",
+            minWidth: "310px",
+          }}
+        >
+
+
+          {/* Shimmer sweep */}
+          <motion.div
+            animate={{ x: ["-120%", "220%"] }}
+            transition={{ duration: 2.8, repeat: Infinity, repeatDelay: 5, ease: "easeInOut" }}
+            className="absolute inset-0 w-1/3 skew-x-12 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)",
+            }}
+          />
+
+          {/* Icon with ping ripple */}
+          <div className="relative shrink-0 ml-2">
+            {/* Outer ping ring */}
+            <motion.div
+              animate={{ scale: [1, 1.75], opacity: [0.45, 0] }}
+              transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut", repeatDelay: 0.4 }}
+              className="absolute inset-0 rounded-full"
+              style={{ background: "rgba(34,197,94,0.3)" }}
+            />
+            {/* Inner glow ring */}
+            <motion.div
+              animate={{ scale: [1, 1.35], opacity: [0.6, 0] }}
+              transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut", delay: 0.3, repeatDelay: 0.4 }}
+              className="absolute inset-0 rounded-full"
+              style={{ background: "rgba(74,222,128,0.25)" }}
+            />
+
+            {/* Icon */}
+            <Handshake className="relative h-8 w-8 text-white" strokeWidth={1.8} />
+          </div>
+
+          {/* Text */}
+          <div>
+            <p
+              className="text-[10px] font-bold uppercase tracking-[0.2em] mb-[3px]"
+              style={{ color: "#4ade80" }}
+            >
+              Our Promise
+            </p>
+            <p className="text-[15px] font-extrabold leading-tight text-white tracking-tight">
+              The Restaurant's Ally
+            </p>
+            <p className="text-[12px] mt-1 leading-snug" style={{ color: "#86efac" }}>
+              We only get paid when you profit.
+            </p>
+          </div>
+        </div>
       </motion.div>
+
     </section>
   );
 }
