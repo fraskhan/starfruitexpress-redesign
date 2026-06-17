@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 const steps = [
   { num: "01", label: "You answer a few questions" },
@@ -13,82 +14,166 @@ export function CTASection() {
   return (
     <section
       id="cta"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-zinc-950"
+      className="relative overflow-hidden"
+      style={{ minHeight: "560px" }}
     >
-      {/* Outer glow background */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-[340px] w-[800px] rounded-full bg-[#2d5a3d]/10 blur-[100px]" />
+      {/* ── Background image ── */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/cta_bg_light.png"
+          alt=""
+          fill
+          className="object-cover object-top"
+          sizes="100vw"
+          priority
+        />
       </div>
 
-      <div className="relative mx-auto max-w-5xl">
-        {/* Main card */}
+      {/* Ambient glows */}
+      <div className="pointer-events-none absolute left-[38%] top-16 h-64 w-64 rounded-full bg-amber-400/10 blur-[80px] z-10" />
+      <div className="pointer-events-none absolute left-[28%] bottom-16 h-48 w-48 rounded-full bg-green-400/10 blur-[60px] z-10" />
+
+      {/* ── Main content ── */}
+      <div className="relative z-20 mx-auto max-w-7xl px-6 py-14 sm:py-20">
+        {/* ── Dark green card ── */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden rounded-2xl"
-          style={{ background: "linear-gradient(135deg, #1a3d28 0%, #2a5c3e 50%, #1e4730 100%)" }}
+          className="relative overflow-hidden rounded-3xl px-12 py-14 lg:px-20 lg:py-16"
+          style={{
+            background: "linear-gradient(135deg, #0d1f12 0%, #122a1a 50%, #0f2318 100%)",
+            boxShadow: "0 32px 96px rgba(0,0,0,0.38), 0 4px 28px rgba(0,0,0,0.22), inset 0 1px 0 rgba(144,200,112,0.08)",
+          }}
         >
-          {/* Subtle inner glow top-right */}
-          <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-[#4a8c5c]/20 blur-[60px]" />
-          <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-[#b5a36a]/10 blur-[50px]" />
+          {/* Inner glow orbs */}
+          <div
+            className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full blur-[80px]"
+            style={{ background: "rgba(74,222,128,0.12)" }}
+          />
+          <div
+            className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full blur-[70px]"
+            style={{ background: "rgba(200,184,122,0.08)" }}
+          />
 
-          <div className="relative grid grid-cols-1 gap-0 lg:grid-cols-2">
-            {/* ─── LEFT: headline + CTA ─── */}
-            <div className="flex flex-col justify-center gap-6 px-10 py-12 lg:py-14">
+          {/* Subtle top border highlight */}
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-px"
+            style={{ background: "linear-gradient(to right, transparent, rgba(144,200,112,0.35), transparent)" }}
+          />
+
+          <div className="relative grid grid-cols-1 items-center gap-16 lg:grid-cols-[1.4fr_1fr]">
+
+            {/* ── LEFT ── */}
+            <motion.div
+              initial={{ opacity: 0, x: -28 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-7"
+            >
               {/* Eyebrow */}
               <div className="flex items-center gap-3">
-                <div className="h-px w-8 bg-[#b5a36a]/60" />
-                <span className="font-medium italic text-[#c8b87a] text-sm tracking-wide">
+                <div
+                  className="h-[2px] w-10 rounded-full"
+                  style={{ background: "rgba(200,184,122,0.75)", boxShadow: "0 0 8px rgba(200,184,122,0.5)" }}
+                />
+                <span
+                  className="text-sm font-semibold italic tracking-wide"
+                  style={{ color: "#c8b87a", filter: "drop-shadow(0 0 6px rgba(200,184,122,0.55))" }}
+                >
                   Put Starfruit to the test
                 </span>
               </div>
 
               {/* Headline */}
-              <div>
-                <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl">
-                  See what a<br />
-                  restaurant ally
-                </h2>
-                <p className="mt-1 text-4xl font-extrabold sm:text-5xl leading-[1.1]">
-                  <span className="text-[#90c870]">can </span>
-                  <span className="text-[#c8b87a]">do </span>
-                  <span className="text-[#90c870]">for </span>
-                  <span className="text-[#c8b87a]">you.</span>
+              <div className="flex flex-col gap-1">
+                <p
+                  className="font-semibold leading-tight"
+                  style={{
+                    fontSize: "clamp(1.55rem, 3.2vw, 2.25rem)",
+                    color: "rgba(255,255,255,0.9)",
+                    letterSpacing: "-0.015em",
+                    filter: "drop-shadow(0 0 18px rgba(144,200,112,0.2))",
+                  }}
+                >
+                  See what a restaurant ally
+                </p>
+                <p
+                  className="font-black italic leading-none"
+                  style={{
+                    fontSize: "clamp(2.8rem, 6vw, 4.2rem)",
+                    letterSpacing: "-0.03em",
+                    filter: "drop-shadow(0 0 28px rgba(144,200,112,0.35))",
+                  }}
+                >
+                  <span style={{ color: "#90c870" }}>can </span>
+                  <span style={{ color: "#c8b87a" }}>do </span>
+                  <span style={{ color: "#90c870" }}>for </span>
+                  <span style={{ color: "#c8b87a" }}>you.</span>
                 </p>
               </div>
 
               {/* CTA button */}
-              <div>
-                <a
+              <div className="flex flex-wrap items-center gap-4 pt-1">
+                <motion.a
                   href="#"
-                  className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:border-white/30"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 340, damping: 18 }}
+                  className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full px-8 py-4 text-[15px] font-bold text-white shadow-lg shadow-green-900/30 transition-all hover:shadow-green-900/45"
+                  style={{
+                    background: "linear-gradient(135deg, #254d2c 0%, #2f7039 100%)",
+                    border: "1px solid rgba(144,200,112,0.22)",
+                  }}
                 >
-                  Solutions We Provide
-                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </a>
+                  <span className="relative z-10">Solutions We Provide</span>
+                  <ArrowRight className="relative z-10 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <div className="absolute inset-0 -translate-x-full skew-x-12 bg-white/10 transition-transform duration-500 group-hover:translate-x-full" />
+                </motion.a>
               </div>
 
-              {/* Trust note */}
-              <div className="flex items-center gap-2 text-xs text-white/50">
-                <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-[#90c870]/70" />
-                A short conversation may show you what your current suppliers never will.
-              </div>
-            </div>
-
-            {/* ─── RIGHT: What Happens Next panel ─── */}
-            <div className="flex items-center justify-center px-8 py-12 lg:py-14">
+              {/* Trust line */}
               <div
-                className="w-full max-w-sm rounded-xl p-6"
-                style={{ background: "rgba(0,0,0,0.25)", backdropFilter: "blur(8px)" }}
+                className="flex items-start gap-3"
+                style={{ color: "rgba(185,215,165,0.85)" }}
+              >
+                <ShieldCheck
+                  className="h-5 w-5 shrink-0 mt-0.5"
+                  style={{ color: "#4ade80", filter: "drop-shadow(0 0 8px rgba(74,222,128,0.7))" }}
+                />
+                <span className="text-[14.5px] font-medium leading-relaxed" style={{ filter: "drop-shadow(0 0 10px rgba(144,200,112,0.25))" }}>
+                  A short conversation may show you what your current suppliers never will.
+                </span>
+              </div>
+            </motion.div>
+
+            {/* ── RIGHT: What Happens Next ── */}
+            <motion.div
+              initial={{ opacity: 0, x: 28 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.75, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center justify-center"
+            >
+              <div
+                className="w-full max-w-sm rounded-2xl p-7"
+                style={{
+                  background: "rgba(0,0,0,0.22)",
+                  backdropFilter: "blur(16px)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
               >
                 {/* Panel header */}
-                <div className="mb-5 flex items-center justify-between">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/50">
+                <div className="mb-6 flex items-center justify-between">
+                  <span
+                    className="text-[10.5px] font-bold uppercase tracking-[0.24em]"
+                    style={{ color: "rgba(180,195,155,0.7)", filter: "drop-shadow(0 0 6px rgba(144,200,112,0.3))" }}
+                  >
                     What Happens Next
                   </span>
-                  <Sparkles className="h-4 w-4 text-[#c8b87a]/70" />
+                  <Sparkles className="h-4 w-4" style={{ color: "rgba(200,184,122,0.9)", filter: "drop-shadow(0 0 8px rgba(200,184,122,0.7))" }} />
                 </div>
 
                 {/* Steps */}
@@ -99,19 +184,54 @@ export function CTASection() {
                       initial={{ opacity: 0, x: 16 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex items-center gap-4 rounded-lg px-4 py-3.5"
-                      style={{ background: "rgba(255,255,255,0.05)" }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 0.3 + i * 0.1,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className="flex items-center gap-4 rounded-xl px-4 py-4 transition-all duration-200 cursor-default"
+                      style={{
+                        background: "rgba(255,255,255,0.055)",
+                        border: "1px solid rgba(255,255,255,0.07)",
+                      }}
+                      onMouseOver={(e) => {
+                        (e.currentTarget as HTMLDivElement).style.background =
+                          "rgba(74,222,128,0.09)";
+                        (e.currentTarget as HTMLDivElement).style.borderColor =
+                          "rgba(74,222,128,0.2)";
+                      }}
+                      onMouseOut={(e) => {
+                        (e.currentTarget as HTMLDivElement).style.background =
+                          "rgba(255,255,255,0.055)";
+                        (e.currentTarget as HTMLDivElement).style.borderColor =
+                          "rgba(255,255,255,0.07)";
+                      }}
                     >
-                      <span className="text-xs font-bold tracking-widest text-[#90c870]/80 shrink-0 w-6">
+                      {/* Number badge */}
+                      <span
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[11px] font-black"
+                        style={{
+                          background: "rgba(74,222,128,0.16)",
+                          color: "#4ade80",
+                          border: "1px solid rgba(74,222,128,0.28)",
+                          boxShadow: "0 0 12px rgba(74,222,128,0.25)",
+                          filter: "drop-shadow(0 0 4px rgba(74,222,128,0.4))",
+                        }}
+                      >
                         {step.num}
                       </span>
-                      <span className="text-sm font-medium text-white/85">{step.label}</span>
+                      <span
+                        className="text-[14px] font-medium leading-snug"
+                        style={{ color: "rgba(225,235,210,0.95)", filter: "drop-shadow(0 0 8px rgba(144,200,112,0.18))" }}
+                      >
+                        {step.label}
+                      </span>
                     </motion.div>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
+
           </div>
         </motion.div>
       </div>
