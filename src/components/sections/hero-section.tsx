@@ -96,14 +96,24 @@ export function HeroSection() {
           >
             <span
               className="text-[clamp(3rem,7vw,5rem)] font-black italic"
-              style={{ color: "#22c55e" }}
+              style={{
+                background: "linear-gradient(to right, #c97d10 0%, #7a9e2e 45%, #2d6a35 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
               keeping
             </span>
 
             <span
               className="relative inline-block text-[clamp(3rem,7vw,5rem)] font-black tracking-tight italic"
-              style={{ color: "#22c55e" }}
+              style={{
+                background: "linear-gradient(to right, #c97d10 0%, #7a9e2e 45%, #2d6a35 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
               less profit.
               {/* Animated underline */}
