@@ -382,7 +382,7 @@ export default function ContactPage() {
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="h-[2px] w-8 bg-gradient-to-r from-amber-500 to-green-500 rounded-full" />
-                  <span className="text-[11px] font-semibold italic tracking-wide" style={{ color: "rgba(212,168,67,0.8)" }}>
+                  <span className="text-[11px] font-semibold italic tracking-wide" style={{ color: "rgba(212,168,67,0.9)", textShadow: "0 0 8px rgba(212,168,67,0.7), 0 0 20px rgba(212,168,67,0.4)" }}>
                     Why choose us
                   </span>
                 </div>
@@ -395,6 +395,7 @@ export default function ContactPage() {
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                     letterSpacing: "-0.03em",
+                    filter: "drop-shadow(0 0 10px rgba(201,125,16,0.55)) drop-shadow(0 0 24px rgba(122,158,46,0.35))",
                   }}
                 >
                   Why Starfruit Express
@@ -410,8 +411,8 @@ export default function ContactPage() {
                   border: "1px solid rgba(212,168,67,0.28)",
                 }}
               >
-                <Phone style={{ color: "#d4a843", width: 14, height: 14 }} />
-                <span className="text-[12.5px] font-semibold" style={{ color: "rgba(212,168,67,0.9)" }}>
+                <Phone style={{ color: "#d4a843", width: 14, height: 14, filter: "drop-shadow(0 0 5px rgba(212,168,67,0.7))" }} />
+                <span className="text-[12.5px] font-semibold" style={{ color: "rgba(212,168,67,0.95)", textShadow: "0 0 8px rgba(212,168,67,0.6), 0 0 18px rgba(212,168,67,0.3)" }}>
                   Urgent? Call (786) 305-7470
                 </span>
               </a>
@@ -453,11 +454,11 @@ export default function ContactPage() {
                   <div>
                     <p
                       className="text-[14px] font-bold mb-1 text-white"
-                      style={{ filter: `drop-shadow(0 0 6px ${item.color}44)` }}
+                      style={{ textShadow: `0 0 8px ${item.color}99, 0 0 20px ${item.color}55`, filter: `drop-shadow(0 0 8px ${item.color}66)` }}
                     >
                       {item.title}
                     </p>
-                    <p className="text-[12.5px] leading-relaxed" style={{ color: "rgba(200,215,185,0.65)" }}>
+                    <p className="text-[12.5px] leading-relaxed" style={{ color: "rgba(200,215,185,0.8)", textShadow: `0 0 10px ${item.color}44` }}>
                       {item.desc}
                     </p>
                   </div>
