@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, ExternalLink, Heart } from "lucide-react";
+import { Phone, Mail, MapPin, Heart, ArrowUpRight, Clock } from "lucide-react";
 
 /* ─── Ticker items ──────────────────────────────────────── */
 const tickerItems = [
@@ -18,237 +18,467 @@ const tickerItems = [
   "ELIMINATE OVERCHARGES",
 ];
 
-const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#stats" },
-  { label: "Contact", href: "#cta" },
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/#stats" },
+  { label: "Contact", href: "/contact" },
 ];
 
-const quickLinks2 = [
-  { label: "Solutions", href: "#features" },
-  { label: "Blog", href: "#blog" },
+const serviceLinks = [
+  { label: "Fresh Produce", href: "/" },
+  { label: "Temperature Logistics", href: "/" },
+  { label: "Wholesale Pricing", href: "/" },
+  { label: "Profit Consulting", href: "/" },
 ];
 
 /* ─── Footer ────────────────────────────────────────────── */
 export function Footer() {
   return (
-    <footer style={{ background: "linear-gradient(135deg, #1a2d1a 0%, #1e2f1c 60%, #1a2a18 100%)" }}>
+    <footer
+      style={{
+        background: "linear-gradient(160deg, #0b1a0f 0%, #0d1f12 40%, #0a1a0d 100%)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Ambient bg glow orbs */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-80px",
+          left: "-60px",
+          width: "420px",
+          height: "420px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(45,106,53,0.13) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "0",
+          right: "5%",
+          width: "320px",
+          height: "320px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(201,125,16,0.07) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+
       {/* ── Scrolling Ticker ── */}
       <div
-        className="relative overflow-hidden border-t border-b"
-        style={{ borderColor: "rgba(100,130,80,0.3)", background: "rgba(0,0,0,0.18)" }}
+        className="relative overflow-hidden border-b"
+        style={{ borderColor: "rgba(74,222,128,0.1)", background: "rgba(0,0,0,0.22)" }}
       >
-        {/* Left / Right fade masks */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10"
-          style={{ background: "linear-gradient(to right, #1e2b1a, transparent)" }} />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10"
-          style={{ background: "linear-gradient(to left, #1e2b1a, transparent)" }} />
+        {/* Fade masks */}
+        <div
+          className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10"
+          style={{ background: "linear-gradient(to right, #0d1f12, transparent)" }}
+        />
+        <div
+          className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10"
+          style={{ background: "linear-gradient(to left, #0d1f12, transparent)" }}
+        />
 
-        <div className="flex w-max animate-ticker gap-0 py-3">
+        <div className="flex w-max animate-ticker gap-0 py-3.5">
           {tickerItems.map((item, i) => (
             <span
               key={i}
-              className="flex items-center gap-4 px-4 text-[11px] font-bold tracking-[0.2em] uppercase whitespace-nowrap"
-              style={{ color: "rgba(200,200,170,0.7)" }}
+              className="flex items-center gap-5 px-5 text-[10.5px] font-bold tracking-[0.22em] uppercase whitespace-nowrap"
+              style={{ color: "rgba(180,200,155,0.55)" }}
             >
               {item}
-              <span style={{ color: "#c8a84a", fontSize: 7 }}>◆</span>
+              <span style={{ color: "#c8a84a", fontSize: 6, filter: "drop-shadow(0 0 4px rgba(200,168,74,0.6))" }}>◆</span>
             </span>
           ))}
         </div>
       </div>
 
       {/* ── Main footer body ── */}
-      <div className="mx-auto max-w-6xl px-8 py-12">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.6fr_1fr_1.2fr]">
+      <div className="mx-auto max-w-7xl px-8 pt-16 pb-12">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.8fr_1fr_1fr_1.2fr]">
 
-          {/* ── Brand column ── */}
-          <div className="flex flex-col gap-5">
-            {/* Logo — same as navbar */}
-            <Link href="/" className="flex items-center gap-3 w-fit group">
-              <Image
-                src="/startfriutlogo.webp"
-                alt="Starfruit Express Logo"
-                width={48}
-                height={48}
-                className="object-contain shrink-0"
-                style={{ filter: "drop-shadow(0 2px 8px rgba(251,146,60,0.35))" }}
-              />
+          {/* ── Col 1: Brand ── */}
+          <div className="flex flex-col gap-6">
+            <Link href="/" className="flex items-center gap-3 w-fit">
+              <div style={{ position: "relative" }}>
+                <Image
+                  src="/startfriutlogo.webp"
+                  alt="Starfruit Express Logo"
+                  width={52}
+                  height={52}
+                  className="object-contain shrink-0"
+                  style={{
+                    filter: "drop-shadow(0 0 14px rgba(74,222,128,0.35)) drop-shadow(0 2px 6px rgba(251,146,60,0.2))",
+                  }}
+                />
+              </div>
               <div className="flex flex-col leading-none">
                 <span
-                  className="text-[22px] font-black tracking-tight leading-tight"
-                  style={{ color: "#4ade80", fontFamily: "Georgia, serif" }}
+                  className="text-[23px] font-black tracking-tight leading-tight"
+                  style={{
+                    color: "#4ade80",
+                    fontFamily: "Georgia, serif",
+                    textShadow: "0 0 18px rgba(74,222,128,0.45), 0 0 40px rgba(74,222,128,0.2)",
+                  }}
                 >
                   Starfruit
                 </span>
                 <span
-                  className="text-[11px] font-medium italic tracking-[0.1em] leading-tight"
-                  style={{ color: "#d4a843", letterSpacing: "0.12em" }}
+                  className="text-[11px] font-medium italic tracking-[0.12em] leading-tight"
+                  style={{
+                    color: "#d4a843",
+                    textShadow: "0 0 12px rgba(212,168,67,0.5)",
+                  }}
                 >
                   — Express —
                 </span>
               </div>
-              {/* Sub-text stacked */}
-              <div
-                className="ml-1 flex flex-col leading-snug border-l pl-3"
-                style={{ borderColor: "rgba(100,130,100,0.35)" }}
-              >
-                <span className="text-[9px] font-semibold tracking-[0.14em] uppercase" style={{ color: "#7a9e8a" }}>Food</span>
-                <span className="text-[9px] font-semibold tracking-[0.14em] uppercase" style={{ color: "#7a9e8a" }}>Procurement</span>
-                <span className="text-[9px] font-semibold tracking-[0.14em] uppercase" style={{ color: "#7a9e8a" }}>&amp; Logistics</span>
-              </div>
             </Link>
 
-            <p className="max-w-[260px] text-[13px] leading-relaxed" style={{ color: "rgba(180,195,165,0.75)" }}>
-              Most restaurants are losing thousands every month without realizing
-              it. Starfruit shows restaurants how to maximize profitability by
-              exposing hidden overcharges, optimizing purchasing decisions, and
-              removing operational friction from the supply chain.
-            </p>
-          </div>
-
-          {/* ── Quick Links ── */}
-          <div className="flex flex-col gap-5">
-            <h4
-              className="text-[10px] font-bold uppercase tracking-[0.2em]"
-              style={{ color: "rgba(180,190,155,0.5)" }}
+            <p
+              className="max-w-[270px] text-[13px] leading-[1.75]"
+              style={{ color: "rgba(175,195,160,0.65)" }}
             >
-              Quick Links
-            </h4>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-3">
-              <ul className="flex flex-col gap-3">
-                {quickLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-[13.5px] font-medium transition-colors duration-150"
-                      style={{ color: "rgba(210,215,185,0.8)" }}
-                      onMouseOver={(e) => (e.currentTarget.style.color = "#4ade80")}
-                      onMouseOut={(e) => (e.currentTarget.style.color = "rgba(210,215,185,0.8)")}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <ul className="flex flex-col gap-3">
-                {quickLinks2.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-[13.5px] font-medium transition-colors duration-150"
-                      style={{ color: "rgba(210,215,185,0.8)" }}
-                      onMouseOver={(e) => (e.currentTarget.style.color = "#4ade80")}
-                      onMouseOut={(e) => (e.currentTarget.style.color = "rgba(210,215,185,0.8)")}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              Most restaurants are losing thousands every month without realizing it.
+              Starfruit exposes hidden overcharges, optimizes your purchasing, and
+              removes friction from your supply chain.
+            </p>
+
+            {/* Divider line */}
+            <div
+              style={{
+                height: "1px",
+                width: "48px",
+                background: "linear-gradient(to right, rgba(74,222,128,0.5), transparent)",
+              }}
+            />
+
+            {/* CTA link */}
+            <a
+              href="/contact"
+              className="group inline-flex items-center gap-2 rounded-full px-5 py-2.5 w-fit transition-all duration-200"
+              style={{
+                background: "rgba(74,222,128,0.07)",
+                border: "1px solid rgba(74,222,128,0.18)",
+                color: "#4ade80",
+                fontSize: "12.5px",
+                fontWeight: 600,
+              }}
+              onMouseOver={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.13)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(74,222,128,0.35)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 16px rgba(74,222,128,0.15)";
+              }}
+              onMouseOut={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.07)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(74,222,128,0.18)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
+            >
+              Get Started Today
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
 
-          {/* ── Get In Touch ── */}
-          <div className="flex flex-col gap-5">
+          {/* ── Col 2: Navigation ── */}
+          <div className="flex flex-col gap-6">
             <h4
-              className="text-[10px] font-bold uppercase tracking-[0.2em]"
-              style={{ color: "rgba(180,190,155,0.5)" }}
+              className="text-[9.5px] font-bold uppercase tracking-[0.25em]"
+              style={{
+                color: "rgba(74,222,128,0.7)",
+                textShadow: "0 0 10px rgba(74,222,128,0.35)",
+              }}
+            >
+              Navigation
+            </h4>
+            <ul className="flex flex-col gap-3.5">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center gap-2 text-[13.5px] font-medium transition-all duration-150"
+                    style={{ color: "rgba(200,215,180,0.7)" }}
+                    onMouseOver={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#4ade80";
+                      (e.currentTarget as HTMLElement).style.textShadow = "0 0 10px rgba(74,222,128,0.5)";
+                    }}
+                    onMouseOut={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "rgba(200,215,180,0.7)";
+                      (e.currentTarget as HTMLElement).style.textShadow = "none";
+                    }}
+                  >
+                    <span
+                      className="inline-block h-px w-3 transition-all duration-200 group-hover:w-5"
+                      style={{ background: "rgba(74,222,128,0.5)" }}
+                    />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── Col 3: Services ── */}
+          <div className="flex flex-col gap-6">
+            <h4
+              className="text-[9.5px] font-bold uppercase tracking-[0.25em]"
+              style={{
+                color: "rgba(212,168,67,0.7)",
+                textShadow: "0 0 10px rgba(212,168,67,0.35)",
+              }}
+            >
+              Services
+            </h4>
+            <ul className="flex flex-col gap-3.5">
+              {serviceLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center gap-2 text-[13.5px] font-medium transition-all duration-150"
+                    style={{ color: "rgba(200,215,180,0.7)" }}
+                    onMouseOver={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#d4a843";
+                      (e.currentTarget as HTMLElement).style.textShadow = "0 0 10px rgba(212,168,67,0.5)";
+                    }}
+                    onMouseOut={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "rgba(200,215,180,0.7)";
+                      (e.currentTarget as HTMLElement).style.textShadow = "none";
+                    }}
+                  >
+                    <span
+                      className="inline-block h-px w-3 transition-all duration-200 group-hover:w-5"
+                      style={{ background: "rgba(212,168,67,0.5)" }}
+                    />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── Col 4: Contact ── */}
+          <div className="flex flex-col gap-6">
+            <h4
+              className="text-[9.5px] font-bold uppercase tracking-[0.25em]"
+              style={{
+                color: "rgba(180,210,165,0.6)",
+                textShadow: "0 0 10px rgba(74,222,128,0.2)",
+              }}
             >
               Get In Touch
             </h4>
             <ul className="flex flex-col gap-4">
+              {/* Phone */}
               <li>
                 <a
                   href="tel:+17863057470"
-                  className="group flex items-center gap-3"
+                  className="group flex items-center gap-3.5 transition-all duration-150"
                 >
                   <span
-                    className="flex h-8 w-8 items-center justify-center rounded-md shrink-0"
-                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
+                    className="flex h-9 w-9 items-center justify-center rounded-xl shrink-0 transition-all duration-200"
+                    style={{
+                      background: "rgba(74,222,128,0.07)",
+                      border: "1px solid rgba(74,222,128,0.15)",
+                    }}
+                    onMouseOver={(e) => {
+                      (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.14)";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "0 0 14px rgba(74,222,128,0.2)";
+                    }}
+                    onMouseOut={(e) => {
+                      (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.07)";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                    }}
                   >
-                    <Phone className="h-3.5 w-3.5" style={{ color: "#7a9e8a" }} />
+                    <Phone className="h-3.5 w-3.5" style={{ color: "#4ade80", filter: "drop-shadow(0 0 4px rgba(74,222,128,0.6))" }} />
                   </span>
-                  <span
-                    className="text-[13.5px] font-medium"
-                    style={{ color: "rgba(210,215,185,0.85)" }}
-                  >
-                    (786) 305 7470
-                  </span>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.15em] mb-0.5" style={{ color: "rgba(74,222,128,0.5)" }}>
+                      Call Us
+                    </span>
+                    <span
+                      className="text-[13.5px] font-semibold transition-all duration-150"
+                      style={{ color: "rgba(210,220,190,0.85)" }}
+                      onMouseOver={(e) => {
+                        (e.currentTarget as HTMLElement).style.color = "#4ade80";
+                        (e.currentTarget as HTMLElement).style.textShadow = "0 0 8px rgba(74,222,128,0.4)";
+                      }}
+                      onMouseOut={(e) => {
+                        (e.currentTarget as HTMLElement).style.color = "rgba(210,220,190,0.85)";
+                        (e.currentTarget as HTMLElement).style.textShadow = "none";
+                      }}
+                    >
+                      (786) 305-7470
+                    </span>
+                  </div>
                 </a>
               </li>
+
+              {/* Email */}
               <li>
                 <a
                   href="mailto:fresh@starfruitexpress.com"
-                  className="group flex items-center gap-3"
+                  className="group flex items-center gap-3.5 transition-all duration-150"
                 >
                   <span
-                    className="flex h-8 w-8 items-center justify-center rounded-md shrink-0"
-                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
+                    className="flex h-9 w-9 items-center justify-center rounded-xl shrink-0 transition-all duration-200"
+                    style={{
+                      background: "rgba(212,168,67,0.07)",
+                      border: "1px solid rgba(212,168,67,0.15)",
+                    }}
+                    onMouseOver={(e) => {
+                      (e.currentTarget as HTMLElement).style.background = "rgba(212,168,67,0.14)";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "0 0 14px rgba(212,168,67,0.2)";
+                    }}
+                    onMouseOut={(e) => {
+                      (e.currentTarget as HTMLElement).style.background = "rgba(212,168,67,0.07)";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                    }}
                   >
-                    <Mail className="h-3.5 w-3.5" style={{ color: "#7a9e8a" }} />
+                    <Mail className="h-3.5 w-3.5" style={{ color: "#d4a843", filter: "drop-shadow(0 0 4px rgba(212,168,67,0.6))" }} />
                   </span>
-                  <span
-                    className="text-[13.5px] font-medium"
-                    style={{ color: "rgba(210,215,185,0.85)" }}
-                  >
-                    fresh@starfruitexpress.com
-                  </span>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.15em] mb-0.5" style={{ color: "rgba(212,168,67,0.5)" }}>
+                      Email Us
+                    </span>
+                    <span
+                      className="text-[12.5px] font-semibold transition-all duration-150 break-all"
+                      style={{ color: "rgba(210,220,190,0.85)" }}
+                      onMouseOver={(e) => {
+                        (e.currentTarget as HTMLElement).style.color = "#d4a843";
+                        (e.currentTarget as HTMLElement).style.textShadow = "0 0 8px rgba(212,168,67,0.4)";
+                      }}
+                      onMouseOut={(e) => {
+                        (e.currentTarget as HTMLElement).style.color = "rgba(210,220,190,0.85)";
+                        (e.currentTarget as HTMLElement).style.textShadow = "none";
+                      }}
+                    >
+                      fresh@starfruitexpress.com
+                    </span>
+                  </div>
                 </a>
               </li>
-              <li>
-                <a
-                  href="#cta"
-                  className="inline-flex items-center gap-1.5 text-[13px] font-semibold transition-colors duration-150"
-                  style={{ color: "#4ade80" }}
-                  onMouseOver={(e) => (e.currentTarget.style.color = "#86efac")}
-                  onMouseOut={(e) => (e.currentTarget.style.color = "#4ade80")}
+
+              {/* Hours */}
+              <li className="flex items-center gap-3.5">
+                <span
+                  className="flex h-9 w-9 items-center justify-center rounded-xl shrink-0"
+                  style={{
+                    background: "rgba(122,158,138,0.07)",
+                    border: "1px solid rgba(122,158,138,0.15)",
+                  }}
                 >
-                  Send us a message
-                  <ExternalLink className="h-3 w-3" />
-                </a>
+                  <Clock className="h-3.5 w-3.5" style={{ color: "#7a9e8a", filter: "drop-shadow(0 0 4px rgba(122,158,138,0.5))" }} />
+                </span>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] mb-0.5" style={{ color: "rgba(122,158,138,0.5)" }}>
+                    Hours
+                  </span>
+                  <span className="text-[13px] font-medium" style={{ color: "rgba(200,215,180,0.8)" }}>
+                    Mon – Fri
+                  </span>
+                  <span className="text-[11.5px]" style={{ color: "rgba(160,180,145,0.5)" }}>
+                    9:00 AM – 6:00 PM EST
+                  </span>
+                </div>
+              </li>
+
+              {/* Location */}
+              <li className="flex items-center gap-3.5">
+                <span
+                  className="flex h-9 w-9 items-center justify-center rounded-xl shrink-0"
+                  style={{
+                    background: "rgba(122,158,138,0.07)",
+                    border: "1px solid rgba(122,158,138,0.15)",
+                  }}
+                >
+                  <MapPin className="h-3.5 w-3.5" style={{ color: "#7a9e8a", filter: "drop-shadow(0 0 4px rgba(122,158,138,0.5))" }} />
+                </span>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] mb-0.5" style={{ color: "rgba(122,158,138,0.5)" }}>
+                    Location
+                  </span>
+                  <span className="text-[13px] font-medium" style={{ color: "rgba(200,215,180,0.8)" }}>
+                    Florida, USA
+                  </span>
+                </div>
               </li>
             </ul>
           </div>
+
         </div>
       </div>
+
+      {/* ── Divider ── */}
+      <div
+        className="mx-auto max-w-7xl px-8"
+        style={{
+          height: "1px",
+          background: "linear-gradient(to right, transparent, rgba(74,222,128,0.15), rgba(212,168,67,0.12), transparent)",
+        }}
+      />
 
       {/* ── Bottom bar ── */}
-      <div
-        className="border-t"
-        style={{ borderColor: "rgba(100,130,80,0.25)" }}
-      >
-        <div className="mx-auto max-w-6xl px-8 py-4 flex flex-col items-center justify-between gap-3 md:flex-row">
-          <p className="text-[11px]" style={{ color: "rgba(160,175,140,0.55)" }}>
-            © 2026 Starfruit Express Corp. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <a
-              href="#"
-              className="text-[11px] transition-colors duration-150"
-              style={{ color: "rgba(160,175,140,0.55)" }}
-              onMouseOver={(e) => (e.currentTarget.style.color = "#4ade80")}
-              onMouseOut={(e) => (e.currentTarget.style.color = "rgba(160,175,140,0.55)")}
-            >
-              Privacy Policy
-            </a>
-            <span className="text-[11px] flex items-center gap-1.5" style={{ color: "rgba(160,175,140,0.55)" }}>
-              Made with{" "}
-              <Heart className="h-3 w-3 inline" style={{ color: "#e05c5c", fill: "#e05c5c" }} />
-              {" "}in Florida
-            </span>
-          </div>
+      <div className="mx-auto max-w-7xl px-8 py-5 flex flex-col items-center justify-between gap-3 md:flex-row">
+        <p className="text-[11px]" style={{ color: "rgba(140,165,120,0.45)" }}>
+          © 2026 Starfruit Express Corp. All rights reserved.
+        </p>
+
+        <div className="flex items-center gap-6">
+          <a
+            href="#"
+            className="text-[11px] transition-colors duration-150"
+            style={{ color: "rgba(140,165,120,0.45)" }}
+            onMouseOver={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "#4ade80";
+              (e.currentTarget as HTMLElement).style.textShadow = "0 0 8px rgba(74,222,128,0.4)";
+            }}
+            onMouseOut={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "rgba(140,165,120,0.45)";
+              (e.currentTarget as HTMLElement).style.textShadow = "none";
+            }}
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="#"
+            className="text-[11px] transition-colors duration-150"
+            style={{ color: "rgba(140,165,120,0.45)" }}
+            onMouseOver={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "#4ade80";
+              (e.currentTarget as HTMLElement).style.textShadow = "0 0 8px rgba(74,222,128,0.4)";
+            }}
+            onMouseOut={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "rgba(140,165,120,0.45)";
+              (e.currentTarget as HTMLElement).style.textShadow = "none";
+            }}
+          >
+            Terms of Service
+          </a>
+          <span
+            className="text-[11px] flex items-center gap-1.5"
+            style={{ color: "rgba(140,165,120,0.45)" }}
+          >
+            Made with{" "}
+            <Heart
+              className="h-2.5 w-2.5 inline"
+              style={{ color: "#e05c5c", fill: "#e05c5c", filter: "drop-shadow(0 0 4px rgba(224,92,92,0.5))" }}
+            />
+            {" "}in Florida
+          </span>
         </div>
       </div>
 
-      {/* ── Ticker keyframe injected via style tag ── */}
+      {/* ── Ticker keyframe ── */}
       <style>{`
         @keyframes ticker {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
         .animate-ticker {
-          animation: ticker 28s linear infinite;
+          animation: ticker 32s linear infinite;
         }
         .animate-ticker:hover {
           animation-play-state: paused;
