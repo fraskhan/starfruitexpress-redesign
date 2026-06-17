@@ -1,105 +1,118 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
 
-const perks = [
-  "No hidden fees",
-  "Pause or cancel anytime",
-  "First box free",
-  "30-min delivery guarantee",
+const steps = [
+  { num: "01", label: "You answer a few questions" },
+  { num: "02", label: "We provide a full audit" },
+  { num: "03", label: "Unlock secrets to more profit" },
 ];
 
 export function CTASection() {
   return (
     <section
       id="cta"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-24 dark:from-zinc-950 dark:to-zinc-900"
+      className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-zinc-950"
     >
-      {/* Decorative blobs */}
-      <div className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 rounded-full bg-orange-300/20 blur-[80px]" />
-      <div className="pointer-events-none absolute -right-20 -bottom-20 h-80 w-80 rounded-full bg-amber-300/20 blur-[80px]" />
+      {/* Outer glow background */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="h-[340px] w-[800px] rounded-full bg-[#2d5a3d]/10 blur-[100px]" />
+      </div>
 
-      <div className="relative mx-auto max-w-4xl px-6 text-center">
-        {/* Badge */}
+      <div className="relative mx-auto max-w-5xl">
+        {/* Main card */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-orange-600 dark:border-orange-800/30 dark:bg-orange-950/20 dark:text-orange-400"
-        >
-          <Sparkles className="h-3 w-3" />
-          Limited time offer
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h2
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl dark:text-white"
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          className="relative overflow-hidden rounded-2xl"
+          style={{ background: "linear-gradient(135deg, #1a3d28 0%, #2a5c3e 50%, #1e4730 100%)" }}
         >
-          Your first box is{" "}
-          <span className="gradient-text">on us.</span>
-        </motion.h2>
+          {/* Subtle inner glow top-right */}
+          <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-[#4a8c5c]/20 blur-[60px]" />
+          <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-[#b5a36a]/10 blur-[50px]" />
 
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto mt-5 max-w-lg text-lg leading-relaxed text-slate-500 dark:text-slate-400"
-        >
-          Join over 18,000 happy customers. Get farm-fresh seasonal produce
-          delivered to your door — with zero risk on your first order.
-        </motion.p>
+          <div className="relative grid grid-cols-1 gap-0 lg:grid-cols-2">
+            {/* ─── LEFT: headline + CTA ─── */}
+            <div className="flex flex-col justify-center gap-6 px-10 py-12 lg:py-14">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3">
+                <div className="h-px w-8 bg-[#b5a36a]/60" />
+                <span className="font-medium italic text-[#c8b87a] text-sm tracking-wide">
+                  Put Starfruit to the test
+                </span>
+              </div>
 
-        {/* Perks list */}
-        <motion.ul
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
-        >
-          {perks.map((perk) => (
-            <li
-              key={perk}
-              className="flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400"
-            >
-              <CheckCircle2 className="h-4 w-4 text-orange-500" />
-              {perk}
-            </li>
-          ))}
-        </motion.ul>
+              {/* Headline */}
+              <div>
+                <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl">
+                  See what a<br />
+                  restaurant ally
+                </h2>
+                <p className="mt-1 text-4xl font-extrabold sm:text-5xl leading-[1.1]">
+                  <span className="text-[#90c870]">can </span>
+                  <span className="text-[#c8b87a]">do </span>
+                  <span className="text-[#90c870]">for </span>
+                  <span className="text-[#c8b87a]">you.</span>
+                </p>
+              </div>
 
-        {/* Email CTA form */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-col items-center gap-4"
-        >
-          {/* Inline email form */}
-          <div className="flex w-full max-w-md overflow-hidden rounded-full border border-slate-200 bg-white shadow-md dark:border-zinc-700 dark:bg-zinc-800">
-            <input
-              type="email"
-              placeholder="Enter your email..."
-              className="flex-1 bg-transparent px-5 py-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 dark:text-white"
-            />
-            <button className="m-1 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-5 py-2 text-sm font-semibold text-white transition-all hover:brightness-110 active:scale-95">
-              Get Started
-              <ArrowRight className="h-4 w-4" />
-            </button>
+              {/* CTA button */}
+              <div>
+                <a
+                  href="#"
+                  className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:border-white/30"
+                >
+                  Solutions We Provide
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </a>
+              </div>
+
+              {/* Trust note */}
+              <div className="flex items-center gap-2 text-xs text-white/50">
+                <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-[#90c870]/70" />
+                A short conversation may show you what your current suppliers never will.
+              </div>
+            </div>
+
+            {/* ─── RIGHT: What Happens Next panel ─── */}
+            <div className="flex items-center justify-center px-8 py-12 lg:py-14">
+              <div
+                className="w-full max-w-sm rounded-xl p-6"
+                style={{ background: "rgba(0,0,0,0.25)", backdropFilter: "blur(8px)" }}
+              >
+                {/* Panel header */}
+                <div className="mb-5 flex items-center justify-between">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/50">
+                    What Happens Next
+                  </span>
+                  <Sparkles className="h-4 w-4 text-[#c8b87a]/70" />
+                </div>
+
+                {/* Steps */}
+                <div className="flex flex-col gap-3">
+                  {steps.map((step, i) => (
+                    <motion.div
+                      key={step.num}
+                      initial={{ opacity: 0, x: 16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                      className="flex items-center gap-4 rounded-lg px-4 py-3.5"
+                      style={{ background: "rgba(255,255,255,0.05)" }}
+                    >
+                      <span className="text-xs font-bold tracking-widest text-[#90c870]/80 shrink-0 w-6">
+                        {step.num}
+                      </span>
+                      <span className="text-sm font-medium text-white/85">{step.label}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-
-          <p className="text-xs text-slate-400">
-            No spam, no commitments. Unsubscribe at any time.
-          </p>
         </motion.div>
       </div>
     </section>
