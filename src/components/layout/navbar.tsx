@@ -10,7 +10,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 const navLinks = [
   {
     label: "HOME",
-    href: "#home",
+    href: "/",
     icon: (
       // House icon — outline
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -21,7 +21,7 @@ const navLinks = [
   },
   {
     label: "SOLUTIONS",
-    href: "#features",
+    href: "#",
     icon: (
       // Stack / layers icon
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -33,7 +33,7 @@ const navLinks = [
   },
   {
     label: "ABOUT",
-    href: "#stats",
+    href: "#",
     icon: (
       // Person silhouette
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -44,7 +44,7 @@ const navLinks = [
   },
   {
     label: "BLOG",
-    href: "#blog",
+    href: "#",
     icon: (
       // Document with lines
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -146,7 +146,7 @@ export function Navbar() {
             {navLinks.map((link) => {
               const isActive = activeLink === link.label;
               return (
-                <li key={link.href} className="flex">
+                <li key={link.label} className="flex">
                   <Link
                     href={link.href}
                     onClick={() => setActiveLink(link.label)}
@@ -199,7 +199,7 @@ export function Navbar() {
           {/* ── CONTACT BUTTON — premium visual ────────────────────── */}
           <div className="hidden md:flex items-center pl-3 pr-[100px] py-2.5">
             <Link
-              href="#cta"
+              href="/contact"
               className="group flex items-center gap-0 cursor-pointer transition-all duration-200"
               style={{
                 filter: "drop-shadow(0 0 12px rgba(212,168,67,0.45)) drop-shadow(0 4px 16px rgba(0,0,0,0.5))",
@@ -293,7 +293,7 @@ export function Navbar() {
           >
             <ul className="flex flex-col px-6 py-4 gap-1">
               {navLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     onClick={() => {
@@ -321,7 +321,7 @@ export function Navbar() {
               ))}
               <li className="pt-3">
                 <Link
-                  href="#cta"
+                  href="/contact"
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center justify-center gap-2 w-full rounded-xl border-2 border-green-800 px-6 py-3 text-sm font-extrabold text-white tracking-wider"
                   style={{ background: "linear-gradient(135deg, #1a3a1a 0%, #2a5a2a 100%)" }}
