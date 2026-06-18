@@ -2,7 +2,6 @@
 
 import { motion, useSpring, useTransform, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
 
 interface AnimatedCounterProps {
   value: number;
@@ -35,7 +34,7 @@ export function AnimatedCounter({
   }, [isInView, spring, value]);
 
   return (
-    <motion.span ref={ref} className={cn(className)}>
+    <motion.span ref={ref} className={className}>
       {display}
     </motion.span>
   );

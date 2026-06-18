@@ -88,49 +88,47 @@ export function Navbar() {
           {/* ── LOGO ─────────────────────────────────────────────── */}
           <Link
             href="/"
-            className="flex items-center gap-3 pl-[100px] pr-6 py-3 group"
+            className="flex items-center gap-2 sm:gap-3 pl-4 sm:pl-8 md:pl-12 lg:pl-16 xl:pl-[72px] pr-3 sm:pr-6 py-3 group"
           >
             {/* Star logo image */}
             <motion.div
               whileHover={{ scale: 1.06, rotate: 3 }}
               transition={{ type: "spring", stiffness: 350 }}
-              className="shrink-0"
+              className="relative shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
             >
               <Image
                 src="/startfriutlogo.webp"
                 alt="Starfruit Express Logo"
-                width={56}
-                height={56}
+                fill
+                priority
                 className="object-contain"
                 style={{
-                  width: "56px",
-                  height: "56px",
                   filter: "drop-shadow(0 2px 8px rgba(251,146,60,0.35))"
                 }}
               />
             </motion.div>
 
             {/* Brand name column */}
-            <div className="flex flex-col leading-none">
+            <div className="flex flex-col leading-none shrink-0">
               {/* "Starfruit" */}
               <span
-                className="text-[26px] font-black tracking-tight leading-tight"
+                className="text-[20px] sm:text-[23px] md:text-[26px] font-black tracking-tight leading-tight"
                 style={{ color: "#4ade80", fontFamily: "Georgia, serif" }}
               >
                 Starfruit
               </span>
               {/* "— Express —" */}
               <span
-                className="text-[13px] font-medium italic tracking-[0.08em] leading-tight"
+                className="text-[11px] sm:text-[13px] font-medium italic tracking-[0.08em] leading-tight"
                 style={{ color: "#d4a843", letterSpacing: "0.12em" }}
               >
                 — Express —
               </span>
             </div>
 
-            {/* "FOOD / PROCUREMENT / & LOGISTICS" small stacked text */}
+            {/* "FOOD / PROCUREMENT / & LOGISTICS" small stacked text — hidden on small screens */}
             <div
-              className="ml-2 flex flex-col leading-snug border-l pl-3"
+              className="hidden sm:flex ml-2 flex-col leading-snug border-l pl-3"
               style={{ borderColor: "rgba(100,130,100,0.4)" }}
             >
               <span className="text-[10px] font-semibold tracking-[0.14em] uppercase" style={{ color: "#7a9e8a" }}>
@@ -154,7 +152,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setActiveLink(link.label)}
-                    className={`group relative flex flex-col items-center justify-center gap-1.5 px-8 py-4 transition-all duration-200 border-x`}
+                    className={`group relative flex flex-col items-center justify-center gap-1.5 px-4 lg:px-6 xl:px-8 py-4 transition-all duration-200 border-x`}
                     style={{
                       borderColor: isActive
                         ? "rgba(212,168,67,0.5)"
@@ -201,7 +199,7 @@ export function Navbar() {
           </ul>
 
           {/* ── CONTACT BUTTON ────────────────────────────────────── */}
-          <div className="hidden md:flex items-center pl-4 pr-10 py-3">
+          <div className="hidden md:flex items-center pl-3 pr-4 lg:pr-8 xl:pr-10 py-3">
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
               <Link
                 href="/contact"

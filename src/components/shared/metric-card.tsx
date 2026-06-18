@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { AnimatedCounter } from "./animated-counter";
 
 interface MetricCardProps {
@@ -33,12 +32,14 @@ export function MetricCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className={cn(
+      className={[
         "group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-sm",
         "transition-shadow duration-300 hover:shadow-lg",
         "dark:border-zinc-800 dark:bg-zinc-900",
         className,
-      )}
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       {/* Subtle gradient accent top-right */}
       <div className="pointer-events-none absolute -top-8 -right-8 h-24 w-24 rounded-full bg-orange-400/10 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:bg-orange-400/20" />

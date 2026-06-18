@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Starfruit Express — Website Redesign
+
+A high-fidelity marketing website for **Starfruit Express**, a Florida-based food procurement and logistics company serving restaurants.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Styling | Tailwind CSS v4 |
+| Animations | Framer Motion |
+| Icons | Lucide React |
+| Language | TypeScript |
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── contact/        # Contact page
+│   ├── globals.css     # Global styles & design tokens
+│   └── layout.tsx      # Root layout
+├── components/
+│   ├── layout/
+│   │   ├── navbar.tsx  # Fixed top navigation
+│   │   └── footer.tsx  # Footer with ticker strip
+│   ├── sections/
+│   │   ├── hero-section.tsx   # Landing hero
+│   │   ├── stats-section.tsx  # Scrolling metrics band
+│   │   └── cta-section.tsx    # Conversion CTA
+│   └── shared/
+│       ├── animated-counter.tsx
+│       └── metric-card.tsx
+└── data/               # Static data / content
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Color palette**: Dark forest green (`#0d1f12`) · Amber gold (`#d4a843`) · Sage green (`#4ade80`)
+- **Typography**: Georgia serif for brand name · System sans-serif for body
+- **Responsive**: Mobile-first, tested at 375 · 768 · 1024 · 1440px
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy to [Vercel](https://vercel.com) with zero config — the project is fully compatible with Vercel's Next.js preset.

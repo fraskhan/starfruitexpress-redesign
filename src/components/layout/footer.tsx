@@ -97,8 +97,8 @@ export function Footer() {
       </div>
 
       {/* ── Main footer body ── */}
-      <div className="mx-auto max-w-7xl px-8 pt-16 pb-12">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.8fr_1fr_1fr_1.2fr]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 pt-12 sm:pt-16 pb-10 sm:pb-12">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.8fr_1fr_1fr_1.2fr]">
 
           {/* ── Col 1: Brand ── */}
           <div className="flex flex-col gap-6">
@@ -421,7 +421,7 @@ export function Footer() {
       />
 
       {/* ── Bottom bar ── */}
-      <div className="mx-auto max-w-7xl px-8 py-5 flex flex-col items-center justify-between gap-3 md:flex-row">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-5 flex flex-col items-center justify-between gap-3 md:flex-row">
         <p className="text-[11px]" style={{ color: "rgba(140,165,120,0.45)" }}>
           © 2026 Starfruit Express Corp. All rights reserved.
         </p>

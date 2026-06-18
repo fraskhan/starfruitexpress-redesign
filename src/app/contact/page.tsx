@@ -92,7 +92,7 @@ export default function ContactPage() {
         {/* ══════════════════════════════════════════
             SPLIT SECTION — Info left / Form right
         ══════════════════════════════════════════ */}
-        <section className="flex-1 flex items-center px-6 pt-28 pb-16 bg-white">
+        <section className="flex-1 flex items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-16 bg-white">
           <div className="mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 items-start">
 
             {/* ══ LEFT — Info ══ */}
@@ -342,7 +342,7 @@ export default function ContactPage() {
                 {/* Submit — hero primary button style */}
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02, brightness: 1.05 }}
+                  whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 340, damping: 18 }}
                   className="group relative flex items-center justify-center gap-2.5 w-full overflow-hidden rounded-full bg-gradient-to-r from-[#1a4020] to-[#2d6e35] py-4 text-[15px] font-bold text-white shadow-lg shadow-green-900/25 transition-all hover:shadow-green-900/40 hover:brightness-110 active:scale-95"
@@ -377,7 +377,7 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-10 flex items-end justify-between flex-wrap gap-4"
+              className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between flex-wrap gap-4"
             >
               <div>
                 <div className="flex items-center gap-3 mb-2">

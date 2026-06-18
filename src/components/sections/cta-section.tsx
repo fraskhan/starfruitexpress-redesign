@@ -40,7 +40,7 @@ export function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden rounded-3xl px-12 py-14 lg:px-20 lg:py-16"
+          className="relative overflow-hidden rounded-3xl px-6 py-10 sm:px-10 sm:py-12 lg:px-20 lg:py-16"
           style={{
             background: "linear-gradient(135deg, #0d1f12 0%, #122a1a 50%, #0f2318 100%)",
             boxShadow: "0 32px 96px rgba(0,0,0,0.38), 0 4px 28px rgba(0,0,0,0.22), inset 0 1px 0 rgba(144,200,112,0.08)",
@@ -62,7 +62,7 @@ export function CTASection() {
             style={{ background: "linear-gradient(to right, transparent, rgba(144,200,112,0.35), transparent)" }}
           />
 
-          <div className="relative grid grid-cols-1 items-center gap-16 lg:grid-cols-[1.4fr_1fr]">
+          <div className="relative grid grid-cols-1 items-center gap-10 lg:gap-16 lg:grid-cols-[1.4fr_1fr]">
 
             {/* ── LEFT ── */}
             <motion.div

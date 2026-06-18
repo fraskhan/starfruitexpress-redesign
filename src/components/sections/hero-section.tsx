@@ -16,13 +16,15 @@ export function HeroSection() {
         {/* Pure white base — fills entire section */}
         <div className="absolute inset-0 bg-white" />
 
-        {/* Restaurant image — covers right 75% only */}
+        {/* Restaurant image:
+            - Mobile (<md): full-bleed behind everything, heavy white overlay for readability
+            - md+: covers right 75% only with soft left-edge fade
+        */}
         <motion.div
           initial={{ opacity: 0, scale: 1.03 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease: "easeOut" }}
-          className="absolute top-0 right-0 bottom-0"
-          style={{ left: "25%" }}
+          className="absolute top-0 right-0 bottom-0 left-0 md:left-[25%]"
         >
           <Image
             src="/hero_restaurant_bg_1781724387068.png"
@@ -30,17 +32,23 @@ export function HeroSection() {
             fill
             priority
             className="object-cover object-center"
-            sizes="75vw"
+            sizes="(max-width: 768px) 100vw, 75vw"
           />
         </motion.div>
 
         {/*
-          Transition overlay — multi-stop gradient for a clean, polished fade.
-          Solid white → softly dissolves into transparent over ~30% of the width.
-          Keeps text perfectly readable while blending naturally into the photo.
+          Transition overlay:
+          - Mobile: heavy white overlay so text stays readable over full-bleed image
+          - md+: classic left-to-right fade keeping the split aesthetic
         */}
+        {/* Mobile overlay */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 md:hidden"
+          style={{ background: "rgba(255,255,255,0.88)" }}
+        />
+        {/* Desktop split overlay */}
+        <div
+          className="absolute inset-0 hidden md:block"
           style={{
             background:
               "linear-gradient(to right, #ffffff 0%, #ffffff 22%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.80) 34%, rgba(255,255,255,0.50) 42%, rgba(255,255,255,0.18) 52%, rgba(255,255,255,0.04) 60%, transparent 70%)",
@@ -57,8 +65,8 @@ export function HeroSection() {
       <div className="pointer-events-none absolute left-[30%] bottom-20 h-48 w-48 rounded-full bg-green-400/10 blur-[60px]" />
 
       {/* ── Main content ─────────────────────────────────────────────── */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-28 pb-20 lg:pt-36">
-        <div className="max-w-[580px]">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 pt-24 sm:pt-28 pb-16 sm:pb-20 lg:pt-36">
+        <div className="w-full max-w-[580px]">
 
           {/* Eyebrow line */}
           <motion.div
