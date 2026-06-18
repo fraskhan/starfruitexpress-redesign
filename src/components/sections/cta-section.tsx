@@ -25,7 +25,6 @@ export function CTASection() {
           fill
           className="object-cover object-top"
           sizes="100vw"
-          priority
         />
       </div>
 

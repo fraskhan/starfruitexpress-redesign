@@ -102,7 +102,11 @@ export function Navbar() {
                 width={56}
                 height={56}
                 className="object-contain"
-                style={{ filter: "drop-shadow(0 2px 8px rgba(251,146,60,0.35))" }}
+                style={{
+                  width: "56px",
+                  height: "56px",
+                  filter: "drop-shadow(0 2px 8px rgba(251,146,60,0.35))"
+                }}
               />
             </motion.div>
 
@@ -196,71 +200,73 @@ export function Navbar() {
             })}
           </ul>
 
-          {/* ── CONTACT BUTTON — premium visual ────────────────────── */}
-          <div className="hidden md:flex items-center pl-3 pr-[100px] py-2.5">
-            <Link
-              href="/contact"
-              className="group flex items-center gap-0 cursor-pointer transition-all duration-200"
-              style={{
-                filter: "drop-shadow(0 0 12px rgba(212,168,67,0.45)) drop-shadow(0 4px 16px rgba(0,0,0,0.5))",
-              }}
-            >
-              {/* Left panel — text */}
-              <div
-                className="flex flex-col justify-center px-5 py-3 rounded-l-lg transition-all duration-200
-                  group-hover:[background:linear-gradient(160deg,#1a4a1e_0%,#2a6a2e_50%,#1a4a1e_100%)]"
+          {/* ── CONTACT BUTTON ────────────────────────────────────── */}
+          <div className="hidden md:flex items-center pl-4 pr-10 py-3">
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+              <Link
+                href="/contact"
+                className="group relative flex items-center gap-3 rounded-xl px-5 py-2.5 overflow-hidden transition-all duration-300"
                 style={{
-                  background: "linear-gradient(160deg, #0f2d12 0%, #1a4a1e 50%, #0f2d12 100%)",
-                  border: "2px solid #c9a227",
-                  borderRight: "none",
-                  minWidth: 148,
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.3)",
+                  background: "linear-gradient(135deg, #0d2210 0%, #122a14 60%, #0f2012 100%)",
+                  border: "1.5px solid rgba(201,162,39,0.55)",
+                  boxShadow: "0 0 18px rgba(201,162,39,0.18), 0 4px 20px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05)",
                 }}
               >
-                {/* Badge chip */}
-                <span
-                  className="inline-block rounded-sm px-1.5 py-0.5 mb-1.5 text-[8px] font-black tracking-[0.22em] uppercase w-fit
-                    transition-all duration-200 group-hover:brightness-110"
+                {/* Ambient glow on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
                   style={{
-                    background: "linear-gradient(90deg, #c9a227 0%, #e8c040 100%)",
-                    color: "#0f2d12",
-                    letterSpacing: "0.2em",
+                    background: "linear-gradient(135deg, rgba(201,162,39,0.08) 0%, rgba(201,162,39,0.14) 100%)",
+                    boxShadow: "inset 0 0 20px rgba(201,162,39,0.1)",
                   }}
-                >
-                  FREE CONSULTATION
-                </span>
-                <span
-                  className="text-[17px] font-black tracking-[0.12em] uppercase leading-none
-                    transition-colors duration-200 group-hover:text-amber-200"
-                  style={{
-                    color: "#ffffff",
-                    textShadow: "0 1px 4px rgba(0,0,0,0.5)",
-                  }}
-                >
-                  CONTACT US
-                </span>
-              </div>
-
-              {/* Right arrow pill */}
-              <div
-                className="flex items-center justify-center self-stretch px-4
-                  transition-all duration-200 group-hover:[background:linear-gradient(160deg,#e8c040_0%,#f5d050_60%,#d4a827_100%)]"
-                style={{
-                  background: "linear-gradient(160deg, #c9a227 0%, #e8c040 60%, #c4981e 100%)",
-                  border: "2px solid #c9a227",
-                  borderLeft: "2px solid rgba(201,162,39,0.4)",
-                  borderTopRightRadius: "0.5rem",
-                  borderBottomRightRadius: "0.5rem",
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.2)",
-                  minWidth: 46,
-                }}
-              >
-                <ArrowRight
-                  className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-0.5"
-                  style={{ color: "#0f2d12", strokeWidth: 2.8 }}
                 />
-              </div>
-            </Link>
+
+                {/* Text block */}
+                <div className="relative flex flex-col leading-none gap-1">
+                  <span
+                    className="text-[15px] font-black tracking-[0.1em] uppercase text-white leading-none group-hover:text-amber-100 transition-colors duration-200"
+                    style={{ textShadow: "0 0 16px rgba(255,255,255,0.1)" }}
+                  >
+                    Contact Us
+                  </span>
+                  <span
+                    className="text-[9px] font-black tracking-[0.24em] uppercase"
+                    style={{
+                      color: "#e8c040",
+                      textShadow: "0 0 8px rgba(232,192,64,0.7), 0 0 16px rgba(232,192,64,0.4)",
+                    }}
+                  >
+                    Free Consultation
+                  </span>
+                </div>
+
+                {/* Divider */}
+                <div
+                  className="relative self-stretch w-px mx-1"
+                  style={{ background: "linear-gradient(to bottom, transparent, rgba(201,162,39,0.4), transparent)" }}
+                />
+
+                {/* Arrow circle */}
+                <div
+                  className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_14px_rgba(201,162,39,0.6)]"
+                  style={{
+                    background: "linear-gradient(135deg, #c9a227 0%, #e8c040 60%, #c4981e 100%)",
+                    boxShadow: "0 0 10px rgba(201,162,39,0.35), inset 0 1px 0 rgba(255,255,255,0.3)",
+                  }}
+                >
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                    style={{ color: "#0d2210", strokeWidth: 2.8 }}
+                  />
+                </div>
+
+                {/* Bottom amber hairline glow */}
+                <div
+                  className="absolute bottom-0 left-4 right-4 h-[1px] opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: "linear-gradient(to right, transparent, #c9a227, transparent)" }}
+                />
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile hamburger */}
