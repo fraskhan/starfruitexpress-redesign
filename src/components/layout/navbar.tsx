@@ -102,6 +102,7 @@ export function Navbar() {
                 fill
                 priority
                 className="object-contain"
+                sizes="56px"
                 style={{
                   filter: "drop-shadow(0 2px 8px rgba(251,146,60,0.35))"
                 }}
